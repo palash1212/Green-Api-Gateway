@@ -2,7 +2,7 @@ import { FaLeaf, FaTrash, FaBolt, FaEllipsisV } from "react-icons/fa";
 
 export default function TopBar() {
   return (
-    <div className="bg-gradient-to-right from-green-600 to-emerald-700 sticky top-0 z-50">
+    <div className="bg-gradient-to-right from-green-600 to-emerald-700 relative top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 h-14 flex justify-between items-center">
         <div className="flex items-center">
           <div className="bg-white p-2 rounded-lg">
