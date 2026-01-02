@@ -4,6 +4,7 @@ import TopBar from "./nav/Topbar";
 import Navbar from "./nav/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Calculator from "./pages/Calculator";
+import Footer from "./footer/Footer";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           </Routes>
         </main>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }
