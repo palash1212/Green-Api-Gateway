@@ -1,32 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus, FaTrash, FaServer } from "react-icons/fa";
 
 export default function ApiManagement() {
-  const [apis, setApis] = useState([]);
+  /* =========================
+     Initialize from storage
+  ========================== */
+  const [apis, setApis] = useState(() => {
+    return JSON.parse(localStorage.getItem("apis")) || [];
+  });
+
   const [apiName, setApiName] = useState("");
   const [apiUrl, setApiUrl] = useState("");
 
-  // Add API
+  /* =========================
+     Persist APIs to storage
+  ========================== */
+  useEffect(() => {
+    localStorage.setItem("apis", JSON.stringify(apis));
+  }, [apis]);
+
+  /* =========================
+     Add API
+  ========================== */
   const handleAddApi = (e) => {
     e.preventDefault();
-
-    if (!apiName || !apiUrl) return;
+    if (!apiName.trim() || !apiUrl.trim()) return;
 
     const newApi = {
       id: Date.now(),
-      name: apiName,
-      url: apiUrl,
+      name: apiName.trim(),
+      url: apiUrl.trim(),
       status: "Active",
     };
 
-    setApis([...apis, newApi]);
+    setApis((prev) => [...prev, newApi]);
     setApiName("");
     setApiUrl("");
   };
 
-  // Remove API
+  /* =========================
+     Remove Single API
+  ========================== */
   const handleRemoveApi = (id) => {
-    setApis(apis.filter((api) => api.id !== id));
+    setApis((prev) => prev.filter((api) => api.id !== id));
   };
 
   return (
@@ -73,7 +89,7 @@ export default function ApiManagement() {
         </button>
       </form>
 
-      {/* API List */}
+      {/* API Table */}
       <div className="bg-white shadow rounded-xl p-6">
         <h3 className="text-lg font-semibold mb-4">Registered APIs</h3>
 
