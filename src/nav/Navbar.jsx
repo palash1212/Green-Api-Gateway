@@ -7,7 +7,6 @@ import {
   FaCalculator,
   FaLightbulb,
   FaChartBar,
-  FaHistory,
 } from "react-icons/fa";
 
 const links = [
@@ -18,7 +17,6 @@ const links = [
   { to: "/energy-calculation", label: "Energy Calc", icon: <FaCalculator /> },
   { to: "/suggestions", label: "Suggestions", icon: <FaLightbulb /> },
   { to: "/ranking", label: "Ranking", icon: <FaChartBar /> },
-  { to: "/logs", label: "Logs", icon: <FaHistory /> },
 ];
 
 export default function Navbar() {
