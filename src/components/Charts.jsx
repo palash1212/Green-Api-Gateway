@@ -12,7 +12,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import { Line, Bar, Pie } from "react-chartjs-2";
+import { Line, Pie } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -62,11 +62,6 @@ const Charts = () => {
     [apiNames]
   );
 
-  const energyData = useMemo(
-    () => Array.from({ length: 7 }, (_, i) => hashValue(`day-${i}`, 200, 600)),
-    []
-  );
-
   /* =========================
      Charts
   ========================== */
@@ -100,19 +95,6 @@ const Charts = () => {
         ],
         borderWidth: 2,
         borderColor: "#FFFFFF",
-      },
-    ],
-  };
-
-  const energyChart = {
-    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-    datasets: [
-      {
-        label: "Energy Used (Wh)",
-        data: energyData,
-        backgroundColor: "#F59E0B",
-        borderColor: "#D97706",
-        borderWidth: 1,
       },
     ],
   };
@@ -156,15 +138,6 @@ const Charts = () => {
           <div className="h-80">
             <Pie data={co2Chart} options={pieOptions} />
           </div>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-bold text-gray-800 mb-6">
-          Energy Usage (Last 7 Days)
-        </h3>
-        <div className="h-80">
-          <Bar data={energyChart} options={options} />
         </div>
       </div>
     </>
