@@ -23,7 +23,9 @@ export default function App() {
           <Route path="/energy-calculation" element={<Calculator />} />
           <Route path="/api-management" element={<ApiManagement />} />
           <Route path="/api-list" element={<ApiList />} />
-          <Route path="/api-analytics" element={<Analytics />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/analytics/:apiId" element={<Analytics />} />
+
           <Route path="/suggestions" element={<Suggestions />} />
           <Route path="/ranking" element={<Ranking />} />
         </Routes>

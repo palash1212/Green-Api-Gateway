@@ -1,13 +1,19 @@
-import React, { useMemo } from "react";
+// ApiList.jsx
+
+import React, { useState } from "react";
 import { FaLeaf, FaTrash } from "react-icons/fa";
 import { HiOutlineChartBar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const ApiList = () => {
-  const apis = useMemo(
-    () => JSON.parse(localStorage.getItem("apis")) || [],
-    []
-  );
+  /* ---------- Lazy Init (NO useEffect) ---------- */
+  const [apis, setApis] = useState(() => {
+    return JSON.parse(localStorage.getItem("apis")) || [];
+  });
 
+  const navigate = useNavigate();
+
+  /* ---------- Helpers ---------- */
   const badge = (score) =>
     score === "Low"
       ? "bg-green-100 text-green-700"
@@ -15,8 +21,26 @@ const ApiList = () => {
       ? "bg-yellow-100 text-yellow-700"
       : "bg-red-100 text-red-700";
 
-  const methodBadge = (m) =>
-    m === "GET" ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700";
+  const methodBadge = (method) =>
+    method === "GET"
+      ? "bg-blue-100 text-blue-700"
+      : "bg-green-100 text-green-700";
+
+  const safe = (value) => (value !== undefined && value !== null ? value : 0);
+
+  /* ---------- Delete API ---------- */
+  const deleteApi = (id) => {
+    if (!window.confirm("Delete this API?")) return;
+
+    const updatedApis = apis.filter((api) => api.id !== id);
+    setApis(updatedApis);
+    localStorage.setItem("apis", JSON.stringify(updatedApis));
+  };
+
+  /* ---------- Open Analytics (Deep Link) ---------- */
+  const openAnalytics = (apiId) => {
+    navigate(`/analytics/${apiId}`);
+  };
 
   return (
     <div className="bg-white p-6 rounded-xl shadow">
@@ -41,11 +65,12 @@ const ApiList = () => {
 
           <tbody>
             {apis.map((api) => (
-              <tr key={api.id} className="border-b hover:bg-gray-50">
+              <tr key={api.id} className="border-b hover:bg-gray-50 transition">
                 <td className="p-3">
                   <p className="font-semibold">{api.route}</p>
                   <p className="text-xs text-gray-500">{api.name}</p>
                 </td>
+
                 <td className="p-3 text-center">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${methodBadge(
@@ -55,12 +80,17 @@ const ApiList = () => {
                     {api.method}
                   </span>
                 </td>
+
                 <td className="p-3 text-center">
-                  {api.dailyRequests.toLocaleString()}
+                  {safe(api.dailyRequests).toLocaleString()}
                 </td>
-                <td className="p-3 text-center">{api.avgPayload} KB</td>
-                <td className="p-3 text-center">{api.energyUsed} Wh</td>
-                <td className="p-3 text-center">{api.co2} g</td>
+
+                <td className="p-3 text-center">{safe(api.avgPayload)} KB</td>
+
+                <td className="p-3 text-center">{safe(api.energyUsed)} Wh</td>
+
+                <td className="p-3 text-center">{safe(api.co2)} g</td>
+
                 <td className="p-3 text-center">
                   <span
                     className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs ${badge(
@@ -70,10 +100,18 @@ const ApiList = () => {
                     <FaLeaf /> {api.greenScore}
                   </span>
                 </td>
+
                 <td className="p-3 text-center">
                   <div className="flex justify-center gap-4">
-                    <FaTrash className="text-red-500 cursor-pointer" />
-                    <HiOutlineChartBar className="text-blue-600 cursor-pointer" />
+                    <FaTrash
+                      className="text-red-500 cursor-pointer hover:scale-110 transition"
+                      onClick={() => deleteApi(api.id)}
+                    />
+
+                    <HiOutlineChartBar
+                      className="text-blue-600 cursor-pointer hover:scale-110 transition"
+                      onClick={() => openAnalytics(api.id)}
+                    />
                   </div>
                 </td>
               </tr>
