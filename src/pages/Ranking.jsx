@@ -116,7 +116,7 @@ export default function Ranking() {
       {/* Page Title */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="flex items-center gap-4">
-          <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl shadow">
+          <div className="p-3 bg-linear-to-r from-green-500 to-emerald-600 rounded-xl shadow">
             <FaTrophy className="text-white text-2xl" />
           </div>
           <div>
@@ -308,7 +308,7 @@ export default function Ranking() {
           </div>
 
           {/* Insights */}
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl shadow-lg border border-green-200">
+          <div className="bg-linear-to-r from-green-50 to-emerald-50 p-6 rounded-xl shadow-lg border border-green-200">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-semibold text-lg text-green-800">
                 Ranking Insights

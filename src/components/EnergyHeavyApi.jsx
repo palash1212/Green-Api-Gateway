@@ -120,7 +120,7 @@ export default function EnergyHeavyApi({ apis }) {
             Highest energy consumption APIs
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
+        <div className="flex items-center gap-2 bg-linear-to-r from-red-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
           <FaFire />
           <span>High Impact</span>
         </div>
@@ -199,7 +199,7 @@ export default function EnergyHeavyApi({ apis }) {
               </div>
 
               {/* Right Side - Scores & Info */}
-              <div className="text-right pl-4 min-w-[120px]">
+              <div className="text-right pl-4 min-w-30">
                 <div className="flex flex-col items-end">
                   <div className="flex items-center gap-2 mb-1">
                     <span
@@ -235,7 +235,7 @@ export default function EnergyHeavyApi({ apis }) {
 
                   {api.suggestion && (
                     <div
-                      className="text-xs text-red-600 font-medium mt-1 truncate max-w-[150px]"
+                      className="text-xs text-red-600 font-medium mt-1 truncate max-w-37.5"
                       title={api.suggestion}
                     >
                       {api.suggestion.split(".")[0]}.

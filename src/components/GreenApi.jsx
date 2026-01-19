@@ -109,7 +109,7 @@ export default function GreenApi({ apis }) {
             Most energy-efficient APIs (lowest energy usage)
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
+        <div className="flex items-center gap-2 bg-linear-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
           <FaLeaf />
           <span>Eco-Friendly</span>
         </div>
@@ -210,7 +210,7 @@ export default function GreenApi({ apis }) {
                 )}
                 {api.suggestion && (
                   <div
-                    className="text-xs text-gray-500 mt-1 truncate max-w-[150px]"
+                    className="text-xs text-gray-500 mt-1 truncate max-w-37.5"
                     title={api.suggestion}
                   >
                     {api.suggestion.split(".")[0]}.
