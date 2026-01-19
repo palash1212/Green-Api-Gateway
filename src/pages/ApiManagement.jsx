@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ApiAnalyzer = () => {
+const ApiManagement = () => {
   const [apiName, setApiName] = useState("");
   const [apiUrl, setApiUrl] = useState("");
   const [method, setMethod] = useState("GET");
@@ -23,7 +23,7 @@ const ApiAnalyzer = () => {
       const response = await axios.post("http://localhost:5000/analyze", {
         apiName, // Send API name to backend
         apiUrl,
-        method
+        method,
       });
 
       setResult(response.data);
@@ -174,4 +174,4 @@ const ApiAnalyzer = () => {
   );
 };
 
-export default ApiAnalyzer;
+export default ApiManagement;
