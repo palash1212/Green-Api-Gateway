@@ -15,22 +15,6 @@ export default function TopBar() {
             <p className="text-xs text-green-500">Sustainable API Monitoring</p>
           </div>
         </div>
-
-        <div className="flex items-center gap-3">
-          <button className="flex items-center px-4 py-2 border border-white/30 rounded-lg text-white">
-            <FaTrash className="mr-2" />
-            Clear All
-          </button>
-
-          <div className="flex items-center bg-white/20 px-4 py-2 rounded-lg">
-            <FaBolt className="text-white mr-2" />
-            <span className="text-white font-bold">5 APIs</span>
-          </div>
-
-          <button className="sm:hidden text-white">
-            <FaEllipsisV />
-          </button>
-        </div>
       </div>
     </div>
   );
