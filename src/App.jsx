@@ -6,7 +6,6 @@ import Calculator from "./pages/Calculator";
 import Footer from "./footer/Footer";
 import ApiManagement from "./pages/ApiManagement";
 import ApiList from "./pages/ApiList";
-import Analytics from "./pages/Analytics";
 import Suggestions from "./pages/Suggestions";
 import Ranking from "./pages/Ranking";
 
@@ -23,8 +22,6 @@ export default function App() {
           <Route path="/energy-calculation" element={<Calculator />} />
           <Route path="/api-management" element={<ApiManagement />} />
           <Route path="/api-list" element={<ApiList />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/analytics/:apiId" element={<Analytics />} />
 
           <Route path="/suggestions" element={<Suggestions />} />
           <Route path="/ranking" element={<Ranking />} />

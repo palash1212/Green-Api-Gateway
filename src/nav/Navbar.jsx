@@ -13,7 +13,6 @@ const links = [
   { to: "/", label: "Dashboard", icon: <FaHome /> },
   { to: "/api-management", label: "API Management", icon: <FaPlus /> },
   { to: "/api-list", label: "API List", icon: <FaList /> },
-  { to: "/api-analytics", label: "Analytics", icon: <FaChartLine /> },
   { to: "/energy-calculation", label: "Energy Calc", icon: <FaCalculator /> },
   { to: "/suggestions", label: "Suggestions", icon: <FaLightbulb /> },
   { to: "/ranking", label: "Ranking", icon: <FaChartBar /> },
